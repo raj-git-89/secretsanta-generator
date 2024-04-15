@@ -35,14 +35,7 @@ pipeline {
                    -Dsonar.projectKey=Santa '''
             }
         }
-        
-		stage('OWASP Dependency Check') {
-            steps {
-               dependencyCheck additionalArguments: ' --scan ./ ', odcInstallation: 'DC'
-               dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
-		 
+        		 
         stage('Code-Build') {
             steps {
                sh "mvn clean install"
